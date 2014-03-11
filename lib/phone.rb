@@ -1,25 +1,31 @@
 class Phone
-  @@all_phones = []
 
   def Phone.create(number)
     new_phone = Phone.new(number)
-    new_phone.add
+    if number != ""
+      new_phone.add(number)
+    end
     new_phone
   end
 
   def initialize(number)
     @number = number
+    @all_phones = []
   end
 
   def Phone.all
-    @@all_phones
+    @all_phones
   end
 
-  def add
-    @@all_phones << self
+  def add(number)
+    @all_phones << number
   end
 
-  def number
-    @number
+  def number(number_index)
+    @number[number_index]
+  end
+
+  def edit_number(number_index)
+    @number[number_index] = number
   end
 end

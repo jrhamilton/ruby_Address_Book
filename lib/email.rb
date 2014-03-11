@@ -1,25 +1,31 @@
 class Email
-  @@all_emails = []
 
   def initialize(email)
     @email = email
+    @all_emails = []
   end
 
   def Email.all
-    @@all_emails
+    @all_emails
   end
 
-  def add
-    @@all_emails << self
+  def add(email)
+    @all_emails << email
   end
 
   def Email.create(email)
     new_email = Email.new(email)
-    new_email.add
+    if email != ""
+      new_email.add(email)
+    end
     new_email
   end
 
   def email
     @email
+  end
+
+  def edit_email(email)
+    @email = email
   end
 end

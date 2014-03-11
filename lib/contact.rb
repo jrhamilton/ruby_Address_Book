@@ -9,30 +9,49 @@ class Contact
 
   def Contact.all
     @@all_contacts
+    @phones = []
+    @emails = []
+    @address = []
   end
 
-  def Contact.view_contact(name)
-    @@all_contacts.each do |contact|
-      if contact.name == name
-        return contact
-      end
-    end
-    puts "No contact found"
-  end
+  # def Contact.view_contact(contact)  #Doesn't work right
+  #   @@all_contacts.each do |cont|
+  #     if contact.name == cont.name
+  #       return contact
+  #     end
+  #     contact.name
+  #   end
 
-  def Contact.edit(name, choice, new_edit)
-    @@all_contacts.each do |contact|
-      if contact.name == name
-        contact.choice.to_sym = new_edit
-      end
-    end
-  end
+  # end
+
+  # def Contact.edit(contact, choice, new_edit)
+  #   @@all_contacts.each do |cont|
+  #     if contact.name == cont.name
+  #       puts "name #{contact.name}"
+  #       puts "choice #{choice}"
+  #       puts "new_edit #{new_edit}"
+  #       case choice
+  #       when "name"
+  #         .name = new_edit
+  #       when "phone"
+  #         contact.phone.number = new_edit
+  #       when "email"
+  #         contact.email.email = new_edit
+  #       when "address"
+  #         contact.address.address = new_edit
+  #       else
+  #         puts "Bad Input. Try Again"
+  #       end
+
+  #     end
+  #   end
+  # end
 
   def initialize(name, phone, email, address)
     @name = name
-    @phone = phone
-    @email = email
-    @address = address
+    @phone = Phone.create(phone)
+    @email = Email.create(email)
+    @address = Address.create(address)
   end
 
   def name
@@ -53,5 +72,9 @@ class Contact
 
   def add
     @@all_contacts << self
+  end
+
+  def edit_name(name)
+    @name = name
   end
 end
