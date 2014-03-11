@@ -20,6 +20,14 @@ class Contact
     puts "No contact found"
   end
 
+  def Contact.edit(name, choice, new_edit)
+    @@all_contacts.each do |contact|
+      if contact.name == name
+        contact.choice.to_sym = new_edit
+      end
+    end
+  end
+
   def initialize(name, phone, email, address)
     @name = name
     @phone = phone

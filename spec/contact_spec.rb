@@ -47,4 +47,12 @@ describe Contact do
       Contact.view_contact('ernie').should eq second_contact
     end
   end
+
+  describe '.edit' do
+    it 'edits a contact property' do
+      test_contact = Contact.create("bert", '555 555-5555', 'bob@bob.com', '123 5th Ave, Portland, Oregon')
+      test_contact.edit("bert", "address", "123 Sesame St, Bronx, NY")
+      test_contact.address.should eq "123 Sesame St, Bronx, NY"
+    end
+  end
 end
