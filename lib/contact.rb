@@ -9,10 +9,69 @@ class Contact
 
   def Contact.all
     @@all_contacts
+  end
+
+  def initialize(name, phone, email, address)
     @phones = []
     @emails = []
-    @address = []
+    @addresses = []
+    @name = name
+
+    @phones << Phone.create(phone)
+    @emails << Email.create(email)
+    @addresses << Address.create(address)
   end
+
+  def name
+    @name
+  end
+
+  def phones
+    @phones
+  end
+
+  def emails
+    @emails
+  end
+
+  def addresses
+    @addresses
+  end
+
+  def add_phone(phone)
+    @phones << Phone.create(phone)
+  end
+
+  def add_email(email)
+    @emails << Email.create(email)
+  end
+
+  def add_address(address)
+    @addresses << Address.create(address)
+  end
+
+  def phone(index)
+    @phones[index].number
+  end
+
+  def email(index)
+    @emails[index].email
+  end
+
+  def address(index)
+    @addresses[index].address
+  end
+
+  def add
+    @@all_contacts << self
+  end
+
+  def edit_name(name)
+    @name = name
+  end
+end
+
+
 
   # def Contact.view_contact(contact)  #Doesn't work right
   #   @@all_contacts.each do |cont|
@@ -47,34 +106,3 @@ class Contact
   #   end
   # end
 
-  def initialize(name, phone, email, address)
-    @name = name
-    @phone = Phone.create(phone)
-    @email = Email.create(email)
-    @address = Address.create(address)
-  end
-
-  def name
-    @name
-  end
-
-  def phone
-    @phone
-  end
-
-  def email
-    @email
-  end
-
-  def address
-    @address
-  end
-
-  def add
-    @@all_contacts << self
-  end
-
-  def edit_name(name)
-    @name = name
-  end
-end
