@@ -6,18 +6,19 @@ require './lib/address'
 
 
 def main_menu
-  puts "\nYour Address Book"
+  system "clear" or system "cls"
+  puts "\n\tYour Address Book\n\n"
   contacts = Contact.all
   contacts.each do |contact|
-    puts "#{contact.name}\n"
+    puts "\t#{contact.name}\n"
     contact.phones.each do |phone|
-      puts "#{phone.number}\n"
+      puts "\t#{phone.number}\n"
     end
     contact.emails.each do |em|
-      puts "#{em.email}\n"
+      puts "\t#{em.email}\n"
     end
     contact.addresss.each do |addr|
-      puts "#{addr.address}\n"
+      puts "\t#{addr.address}\n"
     end
     puts "\n"
   end
