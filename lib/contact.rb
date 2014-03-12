@@ -34,7 +34,7 @@ class Contact
     @emails
   end
 
-  def addresses
+  def addresss
     @addresses
   end
 

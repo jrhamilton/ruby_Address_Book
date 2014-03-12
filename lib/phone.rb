@@ -25,7 +25,7 @@ class Phone
     @number
   end
 
-  def edit_number(new_number)
+  def edit_phone(new_number)
     @number = new_number
   end
 end
